@@ -1,54 +1,209 @@
-# CrewaiInstapost Crew
+# 🚀 AI Crew for Instagram Post
 
-Welcome to the CrewaiInstapost Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+An **AI-powered Instagram content generation system** built using the **CrewAI framework**.
+This project demonstrates how multiple autonomous AI agents collaborate to generate a complete Instagram post—**from idea to caption to hashtags**—based on a single input topic.
 
-## Installation
+---
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+## 📌 Project Overview
 
-First, if you haven't already, install uv:
+This project uses **CrewAI agents** to automate Instagram post creation by dividing responsibilities across specialized roles:
 
-```bash
-pip install uv
+* 🧠 **Content Strategist** – Generates the post idea
+* ✍️ **Caption Writer** – Writes an engaging caption
+* 🔍 **Hashtag Specialist** – Creates optimized hashtags
+
+All agents work together using a shared topic input.
+
+---
+
+## 🧩 Features
+
+* Topic-based Instagram post generation
+* Multi-agent collaboration
+* Clean YAML-based agent & task configuration
+* Easy to extend (Reels, Carousel, Image prompts)
+* Beginner & interview friendly example of **Agentic AI**
+
+---
+
+## 🏗️ Project Structure
+
+```
+instagram_post/
+│
+├── agents.yaml        # Defines AI agents and their roles
+├── tasks.yaml         # Defines tasks with {topic} injection
+├── crew.py            # Main execution file
+├── requirements.txt   # Python dependencies
+└── README.md
 ```
 
-Next, navigate to your project directory and install the dependencies:
+---
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+## ⚙️ Prerequisites
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+* Python **3.9+**
+* OpenAI / Azure OpenAI API Key
+* Basic understanding of Python
 
-- Modify `src/crewai_instapost/config/agents.yaml` to define your agents
-- Modify `src/crewai_instapost/config/tasks.yaml` to define your tasks
-- Modify `src/crewai_instapost/crew.py` to add your own logic, tools and specific args
-- Modify `src/crewai_instapost/main.py` to add custom inputs for your agents and tasks
+---
 
-## Running the Project
+## 📦 Installation
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+### 1️⃣ Clone the Repository
 
 ```bash
-$ crewai run
+git clone https://github.com/husenbasha443/crewai_insta_post_generator.git
+cd crewai_insta_post_generator
 ```
 
-This command initializes the crewai_instapost Crew, assembling the agents and assigning them tasks as defined in your configuration.
+### 2️⃣ Create Virtual Environment (Recommended)
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Linux / Mac
+.venv\Scripts\activate      # Windows
+```
 
-## Understanding Your Crew
+### 3️⃣ Install Dependencies
 
-The crewai_instapost Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+```bash
+pip install -r requirements.txt
+```
 
-## Support
+---
 
-For support, questions, or feedback regarding the CrewaiInstapost Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+## 🔐 Environment Setup
 
-Let's create wonders together with the power and simplicity of crewAI.
+Create a `.env` file in the project root:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+GROQ_API_KEY=your_api_key_here
+```
+
+*(Use Azure OpenAI variables if applicable)*
+
+---
+
+## 🧠 Agents Configuration (`agents.yaml`)
+
+Defines individual AI agents and their responsibilities:
+
+* Content Strategist
+* Caption Writer
+* Hashtag Specialist
+
+Each agent has:
+
+* Role
+* Goal
+* Backstory
+* Delegation control
+
+---
+
+## 🧩 Tasks Configuration (`tasks.yaml`)
+
+Tasks dynamically use the `{topic}` variable:
+
+```yaml
+Generate an Instagram post for the topic: {topic}
+```
+
+Task flow:
+
+1. Content idea generation
+2. Caption writing
+3. Hashtag optimization
+
+---
+
+## ▶️ Running the Project
+
+Update `crew.py` with your topic input:
+
+```python
+crew.kickoff(
+    inputs={
+        "topic": "AI Agents in Real-World Applications"
+    }
+)
+```
+
+Run the project:
+
+```bash
+python crew.py
+```
+
+---
+
+## 🧪 Sample Output
+
+```
+📌 Post Idea:
+AI agents are transforming how businesses automate decisions...
+
+📝 Caption:
+🤖 AI agents are no longer the future—they're here!...
+
+#️⃣ Hashtags:
+#AIAgents #ArtificialIntelligence #TechTrends #Automation
+```
+
+---
+
+## 🔄 Customization Ideas
+
+* Add **Image Prompt Agent**
+* Add **Reels Caption Agent**
+* Add **Multi-language Support**
+* Integrate **MCP Servers**
+* Schedule posts automatically
+
+---
+
+## 🎯 Use Cases
+
+* Social media automation
+* AI agent demos
+* Learning CrewAI
+* Interview & portfolio projects
+* Content marketing workflows
+
+---
+
+## 📚 Technologies Used
+
+* Python
+* CrewAI
+* YAML
+* OpenAI / Azure OpenAI
+* GROQ
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome.
+For major changes, please open an issue first.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🙌 Acknowledgements
+
+* CrewAI Framework
+* OpenAI
+* Agentic AI Community
+
+---
+
+### ⭐ If you find this helpful, give it a star on GitHub!
